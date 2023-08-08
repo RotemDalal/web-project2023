@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: 'Rubik';
+}
+
+main {
+    overflow-x: hidden;
+}
+
+.nav-bar-desktop {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #282828;
+    height: 68px;
+    gap: 30px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+a:hover {
+    color: #a2a2a2 !important;
+}
+
+.nav-bar-mobile {
+    height: 68px;
+    width: 100%;
+    display: none;
+    background-color: #282828;
+}
+
+.fa.fa-bars {
+    display: none;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    left: 0px;
+    right: 0px;
+}
+
+.hamburger-menu {
+    display: none;
+    width: 100%;
+    background: #797878;
+    position: absolute;
+    z-index: 10;
+}
+
+.hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hamburger-menu ul li {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+@media screen and (max-width: 800px) {
+    .nav-bar-desktop {
+        display: none;
+    }
+
+    .nav-bar-mobile {
+        display: flex;
+    }
+
+    .fa.fa-bars {
+        display: block;
+        color: white;
+        font-size: 25px;
+        margin-right: 15px;
+        margin-top: 20px;
+    }
+
+    .img-logo {
+        margin-right: 25px;
+    }
+
+    #alcohol-cards-hp {
+        flex-direction: column;
+        height: 70%;
+    }
+}
+
+#logo-mobile {
+    width: 100%;
+    text-align: center;
+    margin-left: 60px;
+    margin-top: 5px;
+}
+
+#logo {
+    margin-left: 35px;
+}
