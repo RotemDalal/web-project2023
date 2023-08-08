@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WineNot</title>
-</head>
-<body>
-    <p>
-        Home page.
-    </p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'><!-- Rubic Font -->
+        <title>WineNot</title>
+    </head>
+    <body style="background-color: #eee;">
+        <header class="header">
+            <nav class="nav-bar-desktop">
+                <div id="logo">
+                    <a class="img-logo" href="index.html"><img src="img/index/New Icon.png" style="width: 55px;"></a>
+                </div>
+                <div>
+                    <a class="menu-item" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="wines.html">Wines</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="cocktails.html">Cocktails</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="shop.html">Shop</a>
+                </div>
+            </nav>
+            <nav class="nav-bar-mobile">
+                <div id="logo-mobile">
+                    <a class="img-logo" href="index.html"><img src="img/index/New Icon.png" style="width: 55px;"></a>
+                </div>
+                <i class="fa fa-bars" onclick="openHamburger()"></i>
+            </nav>
+            <div class="hamburger-menu">
+                <ul>
+                    <li><a class="menu-item" href="index.html">Home</a></li>
+                    <li><a class="menu-item" href="wines.html">Wines</a></li>
+                    <li><a class="menu-item" href="cocktails.html">Cocktails</a></li>
+                    <li><a class="menu-item" href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+            <div class="hero-image">
+                <img src="img/cocktails/Hero.jpg">
+            </div>
+        </header>
+    </body>
+    <script type="text/javascript" src="script.js"></script>
 </html>
