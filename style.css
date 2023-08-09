@@ -41,7 +41,7 @@ a:hover {
 
 .hero-image img {
     width: 100%;
-    height: auto;
+    height: 250px;
     z-index: -1;
     left: 0px;
     right: 0px;
@@ -88,9 +88,8 @@ a:hover {
         margin-right: 25px;
     }
 
-    #alcohol-cards-hp {
-        flex-direction: column;
-        height: 70%;
+    .text-intro-hp {
+        font-size: 15px;
     }
 }
 
@@ -103,4 +102,138 @@ a:hover {
 
 #logo {
     margin-left: 35px;
+}
+
+#logo img{
+    border-radius: 50%;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 20px;
+    color: #282828;
+    margin-bottom: unset;
+}
+
+.content {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: unset;
+}
+
+.text-intro-hp {
+    font-size: 26px;
+}
+
+.a-box {
+    display: inline-block;
+    width: 240px;
+    text-align: center;
+    transition: transform .2s;
+}
+
+.swiper-slide {
+    width: 240px !important;
+}
+
+.swiper {
+    height: 450px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #282828 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #282828 !important;
+}
+
+@media screen and (min-width: 1000px) {
+    .a-box:hover {
+        transform: scale(1.1);
+    }
+}
+
+.img-container {
+    height: 230px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 0px 0px 20px 20px;
+    display: inline-block;
+}
+
+.img-container img {
+    height: 205px;
+    margin-right: -5px;
+    border-radius: 15px;
+}
+
+.inner-skew {
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0px;
+    font-size: 0px;
+    margin: 30px 0px 0px 0px;
+    height: 250px;
+    width: 200px;
+}
+
+.text-container {
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 25%);
+    padding: 120px 20px 20px 20px;
+    border-radius: 20px;
+    background: #fff;
+    margin: -120px 0px 0px 0px;
+    line-height: 20px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.text-container h3 {
+    margin: 10px 0px 10px 0px;
+    color: #282828;
+    font-size: 22px;
+}
+
+#wines-cards-section {
+    background: #edebeb;
+    height: 530px;
+}
+
+#wines-cards-hp {
+    height: 85%;
+}
+
+#wines-cards-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.wines-title {
+    text-align: center;
+    font-size: 26px;
+    margin: 0;
+    color: #282828;
+    padding-bottom: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a:link {
+    text-decoration: none;
 }
