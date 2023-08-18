@@ -303,6 +303,27 @@ p3 {
     font-size: 18px;
 }
 
+.vid {
+    text-align: center;
+    background-color: black;
+}
+
+video {
+    width: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+    video {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    video {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .title {
         font-size: 24px;
