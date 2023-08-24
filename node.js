@@ -1,11 +1,13 @@
 // //try
-
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
+app.use(express.static('static'));
 const PORT = process.env.PORT || 4001;
 
 app.listen(PORT, () => {
@@ -13,8 +15,8 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-});
+    res.sendFile(__dirname + '/index.html');
+  });
 
 app.use(express.json());
 app.use(cors({
@@ -105,10 +107,17 @@ app.get('/profile', (req, res) => {
 });
 
   
-  app.get('/products', async (req, res) => {
+app.get('/products', async (req, res) => {
     try {
-      const products = await Product.find();
-      res.json(products);
+      const products = await Product.find(); // Assuming you're using Mongoose
+      const productsWithBase64Images = await Promise.all(products.map(async product => {
+        console.log(product.image)
+        const imagePath = path.join(__dirname, 'images', product.image); // Adjust the path accordingly
+        const imageBase64 = fs.readFileSync(imagePath, 'base64');
+        return { ...product.toObject(), image: imageBase64 };
+      }));
+      
+      res.json(productsWithBase64Images);
     } catch (error) {
       res.status(500).json({ message: 'Error retrieving products' });
     }
