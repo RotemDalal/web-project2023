@@ -1,3 +1,5 @@
+// //try
+
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -35,7 +37,21 @@ const User = mongoose.model('User', {
     password: String,
     isAdmin:Boolean,
 });
-
+const productSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    description: String,
+    price: Number,
+    image: String,
+    kosher: Boolean,
+    alcoholPercentage: Number,
+    volume: Number,
+    type: String,
+    drySweet: String,
+    grapeVarieties: String,
+  });
+  
+  const Product = mongoose.model('Product', productSchema);
 app.use(express.json());
 app.use(session({secret: 'your-secret-key', resave: true, saveUninitialized: true}));
 
@@ -87,3 +103,14 @@ app.get('/profile', (req, res) => {
 
     res.json({message: 'Welcome to your profile.'});
 });
+
+  
+  app.get('/products', async (req, res) => {
+    try {
+      const products = await Product.find();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving products' });
+    }
+  });
+  
