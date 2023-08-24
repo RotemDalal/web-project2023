@@ -15,31 +15,52 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!--Animate ins-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" /> <!--swiper cards-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> <!--swiper cards-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!--Search icon-->
     <title>WineNot</title>
 </head>
 
 <body style="background-color: #eee;">
     <header class="header">
         <nav class="nav-bar-desktop">
-            <div id="logo">
-                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg" style="width: 55px;"></a>
+            <div class="left-side">
+                <div id="logo">
+                    <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg"
+                            style="width: 55px;"></a>
+                </div>
+                <div>
+                    <a class="menu-item" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="wines.html">Wines</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="cocktails.html">Cocktails</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="shop.html">Shop</a>
+                </div>
             </div>
-            <div>
-                <a class="menu-item" href="index.html">Home</a>
+            <div class="searchBox">
+
+                <input class="searchInput" type="text" placeholder="Search">
+                <button class="searchButton" href=#>
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
             </div>
-            <div>
-                <a class="menu-item" href="wines.html">Wines</a>
+            <div class="right-side">
+
+                <div>
+                    <a class="login-item" href="../login.html">Login</a>
+                </div>
             </div>
-            <div>
-                <a class="menu-item" href="cocktails.html">Cocktails</a>
-            </div>
-            <div>
-                <a class="menu-item" href="shop.html">Shop</a>
-            </div>
+            
         </nav>
         <nav class="nav-bar-mobile">
             <div id="logo-mobile">
-                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg" style="width: 55px;"></a>
+                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg"
+                        style="width: 55px;"></a>
             </div>
             <i class="fa fa-bars" onclick="openHamburger()"></i>
         </nav>
@@ -49,15 +70,18 @@
                 <li><a class="menu-item" href="wines.html">Wines</a></li>
                 <li><a class="menu-item" href="cocktails.html">Cocktails</a></li>
                 <li><a class="menu-item" href="shop.html">Shop</a></li>
+                <li><a class="menu-item" href="../login.html">Login</a></li>
+
             </ul>
         </div>
         <div class="hero-image">
-            <img src="../static/img/wines/homeP1.jpg">
+            <img src="../static/img/index/wine.jpg">
         </div>
     </header>
 
     <main>
-        <section class="text-intro-hp" data-aos="fade-up" style="padding-top: 10px; padding-bottom: 20px; background-color: white;">
+        <section class="text-intro-hp" data-aos="fade-up"
+            style="padding-top: 10px; padding-bottom: 20px; background-color: white;">
             <div>
                 <h1 class="title">What is Wine?</h1>
             </div>
@@ -337,8 +361,8 @@
                             Wine_Not
                         </h6>
                         <p>
-                            <a class="text-white footer-link" href="index.html"><img src="../static/img/index/wineIcon.jpg"
-                                    style="width: 35%; border-radius: 50%;"></a>
+                            <a class="text-white footer-link" href="index.html"><img
+                                    src="../static/img/index/wineIcon.jpg" style="width: 35%; border-radius: 50%;"></a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -382,7 +406,7 @@
         </div>
         <!-- Grid container -->
     </footer>
-
+    <script type="text/javascript" src="../node.js"></script>
     <script type="text/javascript" src="../script.js"></script>
 </body>
 
