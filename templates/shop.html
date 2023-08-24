@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,30 +16,50 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><!--Animate ins-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" /> <!--swiper cards-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> <!--swiper cards-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!--Search icon-->
     <title>WineNot</title>
 </head>
+
 <body>
     <header class="header">
         <nav class="nav-bar-desktop">
-            <div id="logo">
-                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg" style="width: 55px;"></a>
+            <div class="left-side">
+                <div id="logo">
+                    <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg"
+                            style="width: 55px;"></a>
+                </div>
+                <div>
+                    <a class="menu-item" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="wines.html">Wines</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="cocktails.html">Cocktails</a>
+                </div>
+                <div>
+                    <a class="menu-item" href="shop.html">Shop</a>
+                </div>
             </div>
-            <div>
-                <a class="menu-item" href="index.html">Home</a>
+            <div class="searchBox">
+
+                <input class="searchInput" type="text" placeholder="Search">
+                <button class="searchButton" href=#>
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
             </div>
-            <div>
-                <a class="menu-item" href="wines.html">Wines</a>
-            </div>
-            <div>
-                <a class="menu-item" href="cocktails.html">Cocktails</a>
-            </div>
-            <div>
-                <a class="menu-item" href="shop.html">Shop</a>
+            <div class="right-side">
+                <div>
+                    <a class="login-item" href="../login.html">Login</a>
+                </div>
             </div>
         </nav>
         <nav class="nav-bar-mobile">
             <div id="logo-mobile">
-                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg" style="width: 55px;"></a>
+                <a class="img-logo" href="index.html"><img src="../static/img/index/wineIcon.jpg"
+                        style="width: 55px;"></a>
             </div>
             <i class="fa fa-bars" onclick="openHamburger()"></i>
         </nav>
@@ -48,12 +69,378 @@
                 <li><a class="menu-item" href="wines.html">Wines</a></li>
                 <li><a class="menu-item" href="cocktails.html">Cocktails</a></li>
                 <li><a class="menu-item" href="shop.html">Shop</a></li>
+                <li><a class="menu-item" href="../login.html">Login</a></li>
             </ul>
         </div>
         <div class="hero-image">
             <img src="../static/img/shop/shop-hero.jpeg">
         </div>
     </header>
- 
+
+    <main>
+        <section data-aos="fade-down" style="padding-top: 20px;">
+            <div><img class="icon" src="../static/img/cocktails/bottle.png" alt="icon"></div>
+            <div class="wines_type">Our Products</div>
+        </section>
+
+        <div id="error"></div>
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="1" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="2" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="3" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="4" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="5" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="6" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <h4 class="prod-title">Product</h4>
+                    <p class="prod-desc-txt"></p>
+                    <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                    <p class="prod-price"></p>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="7" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="8" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="9" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="10" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="11" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="12" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <div>
+                        <h4 class="prod-title"></h4>
+                        <p class="prod-desc-txt"></p>
+                        <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                        <p class="prod-price"></p>
+                        <p style="clear: left;"></p>
+                    </div>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="13" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <h4 class="prod-title">Product</h4>
+                    <p class="prod-desc-txt"></p>
+                    <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                    <p class="prod-price"></p>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="14" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products container">
+            <div class="prod-card" data-aos="fade-right">
+                <div class="prod-desc">
+                    <h4 class="prod-title">Product</h4>
+                    <p class="prod-desc-txt"></p>
+                    <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                    <p class="prod-price"></p>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="15" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+            <div class="prod-card" data-aos="fade-left">
+                <div class="prod-desc">
+                    <h4 class="prod-title">Product</h4>
+                    <p class="prod-desc-txt"></p>
+                    <p style="float: left; padding-left: 20px; font-size: 18px;">Price:&nbsp;</p>
+                    <p class="prod-price"></p>
+                </div>
+                <div class="prod-img">
+                    <img>
+                </div>
+                <div class="button-div">
+                    <button class="select-button" id="16" onclick="CartFunc(id)">Select</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center text-lg-start text-white" style="background-color: #282828">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                            Wine_Not
+                        </h6>
+                        <p>
+                            <a class="text-white footer-link" href="index.html"><img
+                                    src="../static/img/index/wineIcon.jpg" style="width: 35%; border-radius: 50%;"></a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <!-- <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6> -->
+                        <p>
+                            <a class="text-white footer-link" href="wines.html">Wines</a>
+                        </p>
+                        <p>
+                            <a class="text-white footer-link" href="shop.html">Shop</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p><i class="footer-icon ri-map-pin-2-line"></i>College of Management Academic</p>
+                        <p><i class="ri-mail-line"></i><a href="mailto:info@wecocktail.com" target="_blank"
+                                style="text-decoration: none; color:white;">info@wine_not.com</a></p>
+                        <p><i class="ri-phone-line"></i>+972 501234567</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+            <hr class="my-3">
+            <!-- Section: Copyright -->
+            <section>
+                <!-- Grid column -->
+                <!-- Copyright -->
+                <div class="row" style="justify-content: center; height: 50px; align-items: center;">
+                    © 2023 Copyright: Rotem, Almog & Linoy
+                </div>
+                <!-- Copyright -->
+            </section>
+            <!-- Section: Copyright -->
+        </div>
+        <!-- Grid container -->
+    </footer>
+    <script type="text/javascript" src="../script.js"></script>
+
 </body>
+
 </html>
