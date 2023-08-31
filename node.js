@@ -7,8 +7,9 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
+
 app.use(express.static('static'));
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 5500;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

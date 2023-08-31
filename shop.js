@@ -1,6 +1,6 @@
 async function getProducts() {
     try {
-      const response = await fetch('http://localhost:4001/products'); // Replace with your API endpoint
+      const response = await fetch('http://localhost:5500/products'); // Replace with your API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }

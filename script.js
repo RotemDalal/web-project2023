@@ -48,7 +48,7 @@ $('#register-btn-reg').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:4001/register",
+        "url": "http://localhost:5500/register",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -108,7 +108,7 @@ $('#login-btn').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:4001/login",
+        "url": "http://localhost:5500/login",
         "method": "POST",
         "timeout": 0,
         "headers": {
