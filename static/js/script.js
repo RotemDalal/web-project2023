@@ -85,7 +85,9 @@ $('#logout-item').click(() => {
     $('#register-item').show();
     $('#hello-nav').text('');
 })
-
+$('#login-item-humburger').click(function () {
+    $('#modal-login').show();
+})
 $('#login-item').click(function () {
     $('#modal-login').show();
 })
