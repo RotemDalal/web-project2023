@@ -7,27 +7,10 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
 
-app.use(express.static('static'));
- const PORT = process.env.PORT || 5500;
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
-
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/views/index.html');
-//   });
-
-var http = require('http');
 app.use(express.static( path.join(__dirname, 'static')));
 
-http.createServer(function(req, res){
-    fs.readFile('static/index.html',function (err, data){
-        res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
-        res.write(data);
-        res.end();
-    });
-}).listen(PORT);
+app.set("view engine", "ejs");
+app.engine("ejs", require("ejs").__express);
 
 app.use(express.json());
 app.use(cors({
@@ -44,12 +27,9 @@ mongoose.connect('mongodb+srv://elimelech89:c1tGOio1xrumyuks@cluster0.tqsu78x.mo
 
 const userController = require('./controllers/usercontroller');
 const productController = require('./controllers/productcontroller');
-console.log(userController)
-//... your app setup
 
 // Routes
-//app.get('/', (req, res) => { ... });
-
+app.use("/shop", require("./routes/shop"));
 app.post('/register', userController.register);
 app.post('/login', userController.login);
 // app.get('/profile', userController.profile);
@@ -57,3 +37,7 @@ app.post('/login', userController.login);
 app.get('/products', productController.getProducts);
 
 //... listen to your server
+
+const http = require("http").Server(app);
+
+http.listen(process.env.PORT || 5500);
