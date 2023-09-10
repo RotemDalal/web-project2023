@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+  <title>Developers' Cities</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    .branch-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .branch {
+      width: 300px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .branch img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .branch h3 {
+      margin-top: 0;
+    }
+    .map-container {
+      width: 100%;
+      height: 200px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Developers' Locations</h1>
+
+  <div class="branch-container">
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Ashkelon</h3>
+        <p>Developers: Shani and Tov</p>
+      </div>
+      <div class="map-container" id="map1"></div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Haifa</h3>
+        <p>Developer: Eden</p>
+      </div>
+      <div class="map-container" id="map2"></div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Ofakim</h3>
+        <p>Developer: Eilon</p>
+      </div>
+      <div class="map-container" id="map3"></div>
+    </div>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3xsqtuuzminYxX_s9sqzILXU2Wv5OrRo"></script>
+  <script>
+    function initMap() {
+ // Branch 1 - Ashkelon
+ var map1 = new google.maps.Map(document.getElementById('map1'), {
+        center: { lat: 31.6689, lng: 34.5712 },
+        zoom: 12
+      });
+      var marker1 = new google.maps.Marker({
+        position: { lat: 31.6689, lng: 34.5712 },
+        map: map1
+      });
+
+      // Branch 2 - Haifa
+      var map2 = new google.maps.Map(document.getElementById('map2'), {
+        center: { lat: 32.7961, lng: 34.9879 },
+        zoom: 12
+      });
+      var marker2 = new google.maps.Marker({
+        position: { lat: 32.7961, lng: 34.9879 },
+        map: map2
+      });
+
+      // Branch 3 - Ofakim
+      var map3 = new google.maps.Map(document.getElementById('map3'), {
+        center: { lat: 31.3115, lng: 34.6222 },
+        zoom: 12
+      });
+      var marker3 = new google.maps.Marker({
+        position: { lat: 31.3115, lng: 34.6222 },
+        map: map3
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3xsqtuuzminYxX_s9sqzILXU2Wv5OrRo&callback=initMap"></script>
+</body>
+</html>
