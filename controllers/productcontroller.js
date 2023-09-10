@@ -56,6 +56,23 @@ module.exports = {
             }
             throw error;
         }
+    },
+    async isAdmin(req, res) {
+        if (req.session && req.session.user && req.session.user.isAdmin) {
+            return true
+        }
+        return false
+    },
+    async addProduct(req, res) {
+        if(!(req.session && req.session.user && req.session.user.isAdmin)) return res.status(401).json({ error: 'Unauthorized' });
+        try {
+            const { name, description, price, image, kosher} = req.body;
+            const product = new Product({ name, description, price, image, kosher });
+            await product.save();
+            res.json(product);
+        } catch (error) {
+            res.status(500).json({ error: 'An error occurred while trying to process a new product.', errorString: error.toString()});
+        }
     }
 };
 

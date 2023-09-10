@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <%- include('./head.ejs') %>
+        <link rel="stylesheet" href="/css/profile.css" />
+        <title>WineNot</title>
+</head>
+
+<body>
+    <%- include('./header.ejs') %>
+        <div>
+            <h1>Hello, <%= username %>
+            </h1>
+            <% if (isAdmin) { %>
+                <a class="content" href="/admin">Admin Panel</a>
+                <% } %>
+        </div>
+        <main>
+            <section data-aos="fade-down" style="padding-top: 20px;">
+                <div><img class="icon" src="/img/cocktails/bottle.png" alt="icon"></div>
+                <div class="wines_type">Add Product</div>
+                <div class="add-product-div">
+                    <form>
+                        <input type="text" id="product-name" placeholder="Product Name">
+                        <input type="text" id="product-price" placeholder="Product Price">
+                        <input type="text" id="product-image" placeholder="Product Image">
+                        <input type="text" id="product-description" placeholder="Product Description">
+                        <button type="button" id="add-product-btn">Add Product</button>
+                    </form>
+                </div>
+            </section>
+
+            <script>
+                const addProductBtn = document.getElementById('add-product-btn');
+                addProductBtn.addEventListener('click', () => {
+                    const name = document.getElementById('product-name').value;
+                    const price = document.getElementById('product-price').value;
+                    const image = document.getElementById('product-image').value;
+                    const description = document.getElementById('product-description').value;
+                    const product = {
+                        name,
+                        price,
+                        image,
+                        description
+                    };
+                    const fetchOptions = {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                    fetch('/api/addProduct', {
+                        ...fetchOptions,
+                        body: JSON.stringify(product),
+                    })
+                        .then(res => {
+                            if (res.status === 200) {
+                                alert('Product added successfully')
+                            } else {
+                                document.getElementById('error').innerHTML = 'Error adding product';
+                            }
+                        });
+                })
+            </script>
+            <div id="error"></div>
+
+            <section class="products container" id="products-container">
+
+            </section>
+
+
+        </main>
+
+        <%- include('./footer.ejs') %>
+            <script type="text/javascript" src="/js/script.js"></script>
+
+</body>
+
+</html>

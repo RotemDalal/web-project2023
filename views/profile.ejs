@@ -1,0 +1,16 @@
+<head>
+<%- include('./head.ejs') %>
+    <link rel="stylesheet" href="/css/profile.css" />
+        <title>WineNot</title>
+</head>
+<%- include('./header.ejs') %>
+    <div>
+        <h1>Hello, <%= username %>
+        </h1>
+        <% if (isAdmin) { %>
+            <a class="content" href="/admin">Admin Panel</a>
+            <% } %>
+    </div>
+
+    <%- include('./footer.ejs') %>
+        <script type="text/javascript" src="/js/script.js"></script>
