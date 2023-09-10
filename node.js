@@ -1,28 +1,33 @@
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 4001;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.use(express.static( path.join(__dirname, 'static')));
 
-app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-});
+app.set("view engine", "ejs");
+app.engine("ejs", require("ejs").__express);
+
 
 app.use(express.json());
 app.use(cors({
-    origin: '*'
+    origin: process.env.CORS_ORIGIN || '*'
 }));
-// Middleware to parse JSON in request bodies
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'almog',
+    resave: true,
+    saveUninitialized: true
+}));
+//app.use(express.json());
+//app.use(cors({
+    //origin: '*'
+//}));
+//app.use(express.json());
+//app.use(session({secret: 'your-secret-key', resave: true, saveUninitialized: true}));
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://elimelech89:c1tGOio1xrumyuks@cluster0.tqsu78x.mongodb.net/?retryWrites=true&w=majority', {
@@ -30,60 +35,36 @@ mongoose.connect('mongodb+srv://elimelech89:c1tGOio1xrumyuks@cluster0.tqsu78x.mo
     useUnifiedTopology: true
 });
 
-const User = mongoose.model('User', {
-    username: String,
-    password: String,
-    isAdmin:Boolean,
-});
+const userController = require('./controllers/usercontroller');
+const productController = require('./controllers/productcontroller');
 
-app.use(express.json());
-app.use(session({secret: 'your-secret-key', resave: true, saveUninitialized: true}));
+// Routes
+app.use("/shop", require("./routes/shop"));
+app.post('/register', userController.register);
+app.post('/login', userController.login);
 
-// ...
+app.get('/products', productController.getProducts);
+app.get('/Statistics', productController.getStats);
 
-// Register a new user
-app.post('/register', async (req, res) => {
+// New /statistics-page route definition
+app.get('/statistics-page', async (req, res) => {
     try {
-        const {username, password} = req.body;
-        //const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({username, password,isAdmin:false});
-        await user.save();
-        res.json(user);
+        // Fetch stats using the product controller
+        const stats = await productController.getStats(req, { json: (data) => data });
+        console.log("Sending stats: ", stats);
+        
+        res.render('Statistics', { stats });  // Pass the stats to the template
     } catch (error) {
-        res.status(500).json({error: 'An error occurred.'});
+        console.error("Error fetching stats:", error);
+        res.status(500).send("Error fetching statistics");
     }
 });
 
-// Login
-app.post('/login', async (req, res) => {
-    try {
-        const {username, password} = req.body;
-    
-        const user = await User.findOne({username,password});
 
-        if (! user) {
-            return res.status(401).json({error: 'Invalid username or password.'});
-        }
+// app.get('/profile', userController.profile);
 
-        // const isPasswordValid = await bcrypt.compare(password, user.password);
+//... listen to your server
 
-        // if (! isPasswordValid) {
-        //     return res.status(401).json({error: 'Invalid username or password.'});
-        // }
+const http = require("http").Server(app);
 
-        req.session.user = user;
-      
-        res.json(user);
-    } catch (error) {
-        res.status(500).json({error: 'An error occurred.'});
-    }
-});
-
-// Protected route
-app.get('/profile', (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).json({error: 'Unauthorized.'});
-    }
-
-    res.json({message: 'Welcome to your profile.'});
-});
+http.listen(process.env.PORT || 5500);

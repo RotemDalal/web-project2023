@@ -48,7 +48,7 @@ $('#register-btn-reg').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:4001/register",
+        "url": "http://localhost:5500/register",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -77,14 +77,17 @@ $('#register-btn-reg').click(() => {
     });
 })
 
+
+
 $('#logout-item').click(() => {
     localStorage.setItem('user', null);
-    $('#logout-item').hide();
-    $('#login-item').show();
+    $('#logout-item').show();
     $('#register-item').show();
     $('#hello-nav').text('');
 })
-
+$('#login-item-humburger').click(function () {
+    $('#modal-login').show();
+})
 $('#login-item').click(function () {
     $('#modal-login').show();
 })
@@ -107,7 +110,7 @@ $('#login-btn').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:4001/login",
+        "url": "http://localhost:5500/login",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -131,7 +134,6 @@ $('#login-btn').click(() => {
         $('#modal-login').hide();
         console.log(response);
         $('#login-item').hide();
-        $('#register-item').hide();
         $('#logout-item').show();
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
