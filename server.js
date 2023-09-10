@@ -17,6 +17,13 @@ app.use(express.json());
 app.use(cors({
     origin: process.env.CORS_ORIGIN || '*'
 }));
+
+// Connect to MongoDB
+mongoose.connect('mongodb+srv://elimelech89:c1tGOio1xrumyuks@cluster0.tqsu78x.mongodb.net/?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 app.use(session({
     secret: process.env.SESSION_SECRET || 'almog',
     resave: true,
@@ -29,19 +36,17 @@ app.use(session({
 //app.use(express.json());
 //app.use(session({secret: 'your-secret-key', resave: true, saveUninitialized: true}));
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://elimelech89:c1tGOio1xrumyuks@cluster0.tqsu78x.mongodb.net/?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
 const userController = require('./controllers/usercontroller');
 const productController = require('./controllers/productcontroller');
 
 // Routes
 app.use("/shop", require("./routes/shop"));
+app.use("/profile", require("./routes/profile"));
 app.post('/register', userController.register);
 app.post('/login', userController.login);
+app.get('/logout', userController.logout);
+
 
 app.get('/products', productController.getProducts);
 app.get('/Statistics', productController.getStats);
