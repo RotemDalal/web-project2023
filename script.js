@@ -77,10 +77,11 @@ $('#register-btn-reg').click(() => {
     });
 })
 
+
+
 $('#logout-item').click(() => {
     localStorage.setItem('user', null);
-    $('#logout-item').hide();
-    $('#login-item').show();
+    $('#logout-item').show();
     $('#register-item').show();
     $('#hello-nav').text('');
 })
@@ -131,7 +132,6 @@ $('#login-btn').click(() => {
         $('#modal-login').hide();
         console.log(response);
         $('#login-item').hide();
-        $('#register-item').hide();
         $('#logout-item').show();
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
