@@ -42,7 +42,7 @@
                     <a class="menu-item" href="cocktails.html">Cocktails</a>
                 </div>
                 <div>
-                    <a class="menu-item" href="shop.html">Shop</a>
+                    <a class="menu-item" href="/shop">Shop</a>
                 </div>
                 <div>
                     <i class="menu-item fa-solid fa-cart-shopping"></i>
@@ -58,6 +58,7 @@
                 </button>
             </div>
             <div class="right-side">
+                <% if (!username) { %>
                 <div>
                     <a class="menu-item" data-bs-toggle="modal" data-bs-target="#cartModal">
                         <i class="fa fa-shopping-cart"></i>
@@ -70,11 +71,14 @@
                 <div>
                     <a class="login-item" href="#" id="register-item">Register</a>
                 </div>
-                <div>
-                    <a class="login-item" href="#" style="display: none;" id="logout-item">Logout</a>
+                <% } else { %>
+                  <div>
+                    <a class="login-item" href="/profile" id="profile-item">Profile</a>
+                    <a class="login-item" href="/logout" id="logout-item">Logout</a>
                 </div>
                 <span id="hello-nav" class="text-white"></span>
             </div>
+            <% } %>
         </nav>
         <nav class="nav-bar-mobile">
             <div id="logo-mobile">
@@ -87,7 +91,7 @@
                 <li><a class="menu-item" href="index.html">Home</a></li>
                 <li><a class="menu-item" href="wines.html">Wines</a></li>
                 <li><a class="menu-item" href="cocktails.html">Cocktails</a></li>
-                <li><a class="menu-item" href="shop.html">Shop</a></li>
+                <li><a class="menu-item" href="/shop">Shop</a></li>
                 <li><a class="menu-item" id="login-item-humburger">Login</a></li>
             </ul>
         </div>
@@ -203,7 +207,7 @@
                             <a class="text-white footer-link" href="wines.html">Wines</a>
                         </p>
                         <p>
-                            <a class="text-white footer-link" href="shop.html">Shop</a>
+                            <a class="text-white footer-link" href="/shop">Shop</a>
                         </p>
                     </div>
                     <!-- Grid column -->
