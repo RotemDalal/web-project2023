@@ -40,6 +40,7 @@ const productController = require('./controllers/productcontroller');
 
 // Routes
 app.use("/shop", require("./routes/shop"));
+app.use("/branch", require("./routes/branches"));
 app.post('/register', userController.register);
 app.post('/login', userController.login);
 
@@ -59,7 +60,6 @@ app.get('/statistics-page', async (req, res) => {
         res.status(500).send("Error fetching statistics");
     }
 });
-
 
 // app.get('/profile', userController.profile);
 
