@@ -81,7 +81,8 @@ $('#register-btn-reg').click(() => {
 
 $('#logout-item').click(() => {
     localStorage.setItem('user', null);
-    $('#logout-item').show();
+    $('#login-item').show();
+    $('#logout-item').hide();
     $('#register-item').show();
     $('#hello-nav').text('');
 })
@@ -135,6 +136,7 @@ $('#login-btn').click(() => {
         console.log(response);
         $('#login-item').hide();
         $('#logout-item').show();
+        $('#register-item').hide();
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
     });
