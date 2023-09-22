@@ -3,34 +3,67 @@
 <head>
     <%- include('./head.ejs') %>
         <link rel="stylesheet" href="/css/profile.css" />
+        <link rel="stylesheet" href="/css/admin.css" />
         <title>WineNot</title>
 </head>
 
 <body>
     <%- include('./header.ejs') %>
-        <div>
+        <div class="centered-div">
             <h1>Hello, <%= username %>
             </h1>
-            <% if (isAdmin) { %>
-                <a class="content" href="/admin">Admin Panel</a>
-                <% } %>
         </div>
         <main>
             <section data-aos="fade-down" style="padding-top: 20px;">
-                <div><img class="icon" src="/img/cocktails/bottle.png" alt="icon"></div>
-                <div class="wines_type">Add Product</div>
-                <div class="add-product-div">
-                    <form>
-                        <input type="text" id="product-name" placeholder="Product Name">
-                        <input type="text" id="product-price" placeholder="Product Price">
-                        <input type="text" id="product-image" placeholder="Product Image">
-                        <input type="text" id="product-description" placeholder="Product Description">
-                        <button type="button" id="add-product-btn">Add Product</button>
-                    </form>
+                <div class="product-actions-div">
+                    <div class="add-product-div">
+                        <div><img class="icon" src="/img/cocktails/bottle.png" alt="icon"></div>
+                        <h2 class="wines_type">Add Product</h2>
+                        <form>
+                            <input type="text" id="product-name" placeholder="Product Name">
+                            <input type="text" id="product-price" placeholder="Product Price">
+                            <input type="text" id="product-image" placeholder="Product Image">
+                            <input type="text" id="product-description" placeholder="Product Description">
+                            <button type="button" id="add-product-btn">Add Product</button>
+                        </form>
+                    </div>
+                    <div class="remove-product-div">
+                        <div><img class="icon" src="/img/shop/remove-icon.png" alt="icon"></div>
+                        <h2 class="wines_type">Remove Product</h2>
+                        <form>
+                            <input type="text" id="remove-product-name" placeholder="Product Name to Remove">
+                            <button type="button" id="remove-product-btn">Remove Product</button>
+                        </form>
+                    </div>
                 </div>
+                <div id="error"></div>
             </section>
-
             <script>
+                const removeProductBtn = document.getElementById('remove-product-btn');
+                removeProductBtn.addEventListener('click', () => {
+                    const name = document.getElementById('remove-product-name').value;
+                    const product = {
+                        name
+                    };
+                    const fetchOptions = {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                    fetch('/api/removeProduct', {
+                        ...fetchOptions,
+                        body: JSON.stringify(product),
+                    })
+                        .then(async res => {
+                            if (res.status === 200) {
+                                alert('Product removed successfully')
+                            } else {
+                                document.getElementById('error').innerText = 'Error removing product: ' + await res.text();
+                            }
+                        });
+                })
+
                 const addProductBtn = document.getElementById('add-product-btn');
                 addProductBtn.addEventListener('click', () => {
                     const name = document.getElementById('product-name').value;
@@ -57,12 +90,11 @@
                             if (res.status === 200) {
                                 alert('Product added successfully')
                             } else {
-                                document.getElementById('error').innerHTML = 'Error adding product';
+                                document.getElementById('error').innerText = 'Error adding product';
                             }
                         });
                 })
             </script>
-            <div id="error"></div>
 
             <section class="products container" id="products-container">
 

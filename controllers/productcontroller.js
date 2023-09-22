@@ -7,7 +7,7 @@ const path = require('path');
 module.exports = {
     async getProducts(req, res) {
         try {
-            const products = await Product.find(); // Assuming you're using Mongoose
+            const products = await Product.find();
             const productsWithBase64Images = await Promise.all(products.map(async product => {
                 const imagePath = path.join(path.dirname(__dirname), 'images', product.image);
                 if (fs.existsSync(imagePath)) {
@@ -72,6 +72,20 @@ module.exports = {
             res.json(product);
         } catch (error) {
             res.status(500).json({ error: 'An error occurred while trying to process a new product.', errorString: error.toString()});
+        }
+    },
+    async removeProduct(req, res) {
+        try {
+            const { name } = req.body;
+            const deletedProduct = await Product.findOneAndDelete({ name: name });
+            if (deletedProduct) {
+                res.status(200).send('Product removed successfully');
+            } else {
+                res.status(404).send('Product not found');
+            }
+        } catch (error) {
+            console.error('Error removing product:', error);
+            res.status(500).send('Internal Server Error');
         }
     }
 };

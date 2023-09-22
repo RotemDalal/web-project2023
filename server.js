@@ -51,6 +51,7 @@ app.get('/logout', userController.logout);
 
 app.get('/products', productController.getProducts);
 app.post('/api/addProduct', productController.addProduct);
+app.post('/api/removeProduct', productController.removeProduct);
 app.get('/Statistics', productController.getStats);
 
 // New /statistics-page route definition

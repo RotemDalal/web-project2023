@@ -50,3 +50,15 @@ button {
 button:hover {
     background-color: #593535; /* darker wine color on hover */
 }
+
+.centered-div {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}

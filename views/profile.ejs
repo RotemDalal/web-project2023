@@ -4,9 +4,8 @@
         <title>WineNot</title>
 </head>
 <%- include('./header.ejs') %>
-    <div>
-        <h1>Hello, <%= username %>
-        </h1>
+    <div class="centered-div">
+        <h1>Hello, <%= username %></h1>
         <% if (isAdmin) { %>
             <a class="content" href="/admin">Admin Panel</a>
             <% } %>
