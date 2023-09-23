@@ -137,7 +137,7 @@ $('#login-btn').click(() => {
         $('#logout-item').show();
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
-        window.location.reload();
+        // window.location.reload();
     });
 })
 
