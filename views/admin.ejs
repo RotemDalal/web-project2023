@@ -4,6 +4,7 @@
     <%- include('./head.ejs') %>
         <link rel="stylesheet" href="/css/profile.css" />
         <link rel="stylesheet" href="/css/admin.css" />
+        <script src="/js/admin.js"></script>
         <title>WineNot</title>
 </head>
 
@@ -28,7 +29,7 @@
                         </form>
                     </div>
                     <div class="remove-product-div">
-                        <div><img class="icon" src="/img/shop/remove-icon.png" alt="icon"></div>
+                        <div><img class="garbae-icon" src="/img/shop/remove-icon.png" alt="icon"></div>
                         <h2 class="wines_type">Remove Product</h2>
                         <form>
                             <input type="text" id="remove-product-name" placeholder="Product Name to Remove">
@@ -38,64 +39,6 @@
                 </div>
                 <div id="error"></div>
             </section>
-            <script>
-                const removeProductBtn = document.getElementById('remove-product-btn');
-                removeProductBtn.addEventListener('click', () => {
-                    const name = document.getElementById('remove-product-name').value;
-                    const product = {
-                        name
-                    };
-                    const fetchOptions = {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                    fetch('/api/removeProduct', {
-                        ...fetchOptions,
-                        body: JSON.stringify(product),
-                    })
-                        .then(async res => {
-                            if (res.status === 200) {
-                                alert('Product removed successfully')
-                            } else {
-                                document.getElementById('error').innerText = 'Error removing product: ' + await res.text();
-                            }
-                        });
-                })
-
-                const addProductBtn = document.getElementById('add-product-btn');
-                addProductBtn.addEventListener('click', () => {
-                    const name = document.getElementById('product-name').value;
-                    const price = document.getElementById('product-price').value;
-                    const image = document.getElementById('product-image').value;
-                    const description = document.getElementById('product-description').value;
-                    const product = {
-                        name,
-                        price,
-                        image,
-                        description
-                    };
-                    const fetchOptions = {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                    fetch('/api/addProduct', {
-                        ...fetchOptions,
-                        body: JSON.stringify(product),
-                    })
-                        .then(res => {
-                            if (res.status === 200) {
-                                alert('Product added successfully')
-                            } else {
-                                document.getElementById('error').innerText = 'Error adding product';
-                            }
-                        });
-                })
-            </script>
-
             <section class="products container" id="products-container">
 
             </section>
