@@ -51,7 +51,7 @@
 
         <div id="error"></div>
         
-        <section class="products container" id="products-container">
+        <section class="products container" id="products-container" style="margin-bottom: 50px">
             
         </section>
 
@@ -59,6 +59,9 @@
     </main>
     <%- include('./footer.ejs') %>
     <script type="text/javascript" src="/js/shop.js"></script>
+    <script>
+        updatemultiBy('<%= rate %>');
+    </script>
 </body>
 
 </html>

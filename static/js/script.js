@@ -132,12 +132,11 @@ $('#login-btn').click(() => {
 
     $.ajax(settings).done(function (response) {
         $('#modal-login').hide();
-        console.log(response);
         $('#login-item').hide();
         $('#logout-item').show();
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
-        // window.location.reload();
+        window.location.reload();
     });
 })
 

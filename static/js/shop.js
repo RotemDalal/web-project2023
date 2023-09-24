@@ -1,3 +1,9 @@
+let multiBy = 1;
+function updatemultiBy(num){
+  multiBy = Number(num);
+}
+
+
 async function getProducts() {
   try {
     const response = await fetch('http://localhost:5500/products'); // Replace with your API endpoint
@@ -31,7 +37,7 @@ function removeProductFromCart(productId) {
 
 function updateCartCounter() {
 const cartCounter = document.getElementById('cart-counter');
-cartCounter.textContent = selectedProducts.length;
+cartCounter.innerHTML = selectedProducts.length;
 }
 
 function updateCartList() {
@@ -41,11 +47,11 @@ function updateCartList() {
   selectedProducts.forEach(product => {
     const listItem = document.createElement('li');
     listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-    listItem.textContent = product.name; // Display product name
+    listItem.innerHTML = product.name; // Display product name
 
     const removeButton = document.createElement('button');
     removeButton.className = 'btn btn-danger';
-    removeButton.textContent = 'Remove';
+    removeButton.innerHTML = 'Remove';
     removeButton.addEventListener('click', () => {
       removeProductFromCart(product.id);
     });
@@ -81,21 +87,21 @@ function addProductCards(products) {
 
     const title = document.createElement('h4');
     title.classList.add('prod-title');
-    title.textContent = product.name;
+    title.innerHTML = product.name;
 
     const descText = document.createElement('p');
     descText.classList.add('prod-desc-txt');
-    descText.textContent = product.description;
+    descText.innerHTML = product.description;
 
     const priceLabel = document.createElement('p');
     priceLabel.style.float = 'left';
     priceLabel.style.paddingLeft = '20px';
     priceLabel.style.fontSize = '18px';
-    priceLabel.textContent = 'Price: ';
+    priceLabel.innerHTML = 'Price: ';
 
     const price = document.createElement('p');
     price.classList.add('prod-price');
-    price.textContent = product.price.toFixed(2);
+    price.innerHTML = "&nbsp;$" + product.price.toFixed(2);
 
     desc.appendChild(title);
     desc.appendChild(descText);
@@ -116,15 +122,30 @@ function addProductCards(products) {
 
     const selectButton = document.createElement('button');
     selectButton.classList.add('select-button');
-    selectButton.textContent = 'Select';
+    selectButton.innerHTML = 'Add to cart';
     selectButton.id = product.id;
     selectButton.addEventListener('click', () => {
-      const productName = product.name;;
+      const productName = product.name;
       addProductToCart(selectButton.id, productName);
     });
     
 
     buttonDiv.appendChild(selectButton);
+    buttonDiv.appendChild(document.createElement('br'));
+    buttonDiv.appendChild(document.createElement('br'));
+    const exchangeButton = document.createElement('button');
+    exchangeButton.classList.add('select-button');
+    exchangeButton.innerHTML = 'Exchange to NIS';
+    exchangeButton.addEventListener('click', () => {
+      if(exchangeButton.innerHTML === 'Exchange to NIS'){
+        price.innerHTML = "&nbsp;&#8362;" + (product.price * multiBy).toFixed(2);
+        exchangeButton.innerHTML = 'Exchange to USD';
+      }else{
+        price.innerHTML = "&nbsp;$" + product.price.toFixed(2);
+        exchangeButton.innerHTML = 'Exchange to NIS';
+      }
+    });
+    buttonDiv.appendChild(exchangeButton);
 
     card.appendChild(desc);
     card.appendChild(imgContainer);

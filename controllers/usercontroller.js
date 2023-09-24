@@ -1,4 +1,5 @@
 const User = require('../models/usermodel');
+const productController = require('./productcontroller');
 //... other necessary imports
 
 module.exports = {
@@ -21,7 +22,8 @@ module.exports = {
     },
 
     async admin(req, res) {
-        res.render("../views/admin.ejs", { username: req.session.user?.username, isAdmin: req.session.user?.isAdmin });
+        const stats = await productController.getStats(req, { json: (data) => data });
+        res.render("../views/admin.ejs", { username: req.session.user?.username, isAdmin: req.session.user?.isAdmin, stats });
     },
 
     async register(req, res) {

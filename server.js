@@ -6,6 +6,11 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
+const dotenv = require("dotenv");
+const env = process.env.NODE_ENV || "local";
+dotenv.config({ path: __dirname + `/config/.env.${env}` });
+
+const { router: shopRouter } = require("./routes/shop");
 
 app.use(express.static( path.join(__dirname, 'static')));
 
@@ -29,6 +34,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 //app.use(express.json());
 //app.use(cors({
     //origin: '*'
