@@ -45,7 +45,7 @@ app.use(session({
 
 const userController = require('./controllers/usercontroller');
 const productController = require('./controllers/productcontroller');
-
+const socialController = require('./controllers/socialController');
 // Routes
 app.use("/shop", require("./routes/shop"));
 app.use("/profile", require("./routes/profile"));
@@ -56,10 +56,12 @@ app.get('/logout', userController.logout);
 
 
 app.get('/products', productController.getProducts);
+app.post('/api/postToFB', socialController.postToFB);
+app.get('/api/getFBDetails', socialController.getDetails);
 app.post('/api/addProduct', productController.addProduct);
 app.post('/api/removeProduct', productController.removeProduct);
 app.get('/Statistics', productController.getStats);
-
+app
 // New /statistics-page route definition
 app.get('/statistics-page', async (req, res) => {
     try {
@@ -80,5 +82,9 @@ app.get('/statistics-page', async (req, res) => {
 //... listen to your server
 
 const http = require("http").Server(app);
-
+const https = require("https");
+const devcert = require('devcert');
+devcert.certificateFor('my-app.test').then((ssl) => {
+    https.createServer(ssl, app).listen(5555);
+});
 http.listen(process.env.PORT || 5500);

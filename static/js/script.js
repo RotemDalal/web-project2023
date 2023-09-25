@@ -48,7 +48,7 @@ $('#register-btn-reg').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:5500/register",
+        "url": window.location.origin + "/register",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -110,7 +110,7 @@ $('#login-btn').click(() => {
     }
 
     var settings = {
-        "url": "http://localhost:5500/login",
+        "url": window.location.origin + "/login",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -137,6 +137,7 @@ $('#login-btn').click(() => {
         localStorage.setItem("user", JSON.stringify(response));
         $('#hello-nav').text("hello " + response.username);
         window.location.reload();
+        console.log('hello')
     });
 })
 
