@@ -54,7 +54,7 @@ app.post('/register', userController.register);
 app.post('/login', userController.login);
 app.get('/logout', userController.logout);
 
-
+app.post('/api/addToCart', productController.addToCart)
 app.get('/products', productController.getProducts);
 app.post('/api/postToFB', socialController.postToFB);
 app.get('/api/getFBDetails', socialController.getDetails);
