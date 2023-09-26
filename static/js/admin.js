@@ -19,15 +19,31 @@ $(document).ready(function () {
     });
 
     $('#add-product-btn').on('click', function () {
-        const name = $('#product-name').val();
-        const price = $('#product-price').val();
-        const image = $('#product-image').val();
-        const description = $('#product-description').val();
+        const id = parseInt($('#id').val());
+        const name = $('#name').val();
+        const description = $('#description').val();
+        const price = parseInt($('#price').val());
+        const image = $('#image').val();
+        const kosher = Boolean( $('#kosher').val());
+        const alcoholPercentage = parseInt($('#alcoholPercentage').val());
+        const volume =parseInt( $('#volume').val());
+        const type = $('#type').val();
+        const drySweet = $('#drySweet').val();
+        const grapeVarieties = $('#grapeVarieties').val();
+
+
         const product = {
+            id,
             name,
+            description,
             price,
             image,
-            description
+            kosher,
+            alcoholPercentage,
+            volume,
+            type,
+            drySweet,
+            grapeVarieties
         };
         $.ajax({
             type: "POST",
@@ -63,11 +79,11 @@ $(document).ready(function () {
         url: "/api/getFBDetails",
         contentType: "application/json",
         success: function (res) {
-            $('#facebook-page-data').text('Page Name:' + res.name) 
+            $('#facebook-page-data').text('Page Name:' + res.name)
         },
         error: function (jqXHR) {
             $('#error').text('Error removing product: ' + jqXHR.responseText);
         }
     });
-    
+
 });

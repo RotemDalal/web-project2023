@@ -24,11 +24,6 @@
                 overflow-y: hidden;
                 transition: 0.2ms;
             }
-
-            #pageContainer {
-                height: 650px;
-                overflow-y: hidden;
-            }
         </style>
         <script>
             // Please , do not change this var name because it clashes with the let i in the facebook js
@@ -54,10 +49,17 @@
                         <div><img class="icon" src="/img/cocktails/bottle.png" alt="icon"></div>
                         <h2 class="wines_type">Add Product</h2>
                         <form>
-                            <input type="text" id="product-name" placeholder="Product Name" required>
-                            <input type="text" id="product-price" placeholder="Product Price" required>
-                            <input type="text" id="product-image" placeholder="Product Image" required>
-                            <input type="text" id="product-description" placeholder="Product Description" required>
+                            <input type="text" id="id" placeholder="Product Id(number)" required>
+                            <input type="text" id="name" placeholder="Product Name(char)" required>
+                            <input type="text" id="description" placeholder="Product Description(char)" required>
+                            <input type="text" id="price" placeholder="Product Price(number)" required>
+                            <input type="text" id="image" placeholder="Product Image(link)" required>
+                            <input type="text" id="kosher" placeholder="Kosher(false/true)" required>
+                            <input type="text" id="alcoholPercentage" placeholder="Alcohol Percentage(number)" required>
+                            <input type="text" id="volume" placeholder="volume(number)" required>
+                            <input type="text" id="type" placeholder="type(name)" required>
+                            <input type="text" id="drySweet" placeholder="Dry Sweet(char)" required>
+                            <input type="text" id="grapeVarieties" placeholder="Grape Varieties(char)" required>
                             <button type="button" id="add-product-btn">Add Product</button>
                         </form>
                     </div>
@@ -78,13 +80,11 @@
                             <button type="button" id="post-btn">Post</button>
                         </form>
                     </div>
-    
+
                 </div>
                 <div id="error"></div>
             </section>
-            <section class="products container" id="products-container">
 
-            </section>
             <div id="statsContent" class="container">
                 <h1>Statistics</h1>
 

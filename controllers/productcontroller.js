@@ -88,18 +88,30 @@ module.exports = {
 
         try {
             const {
+                id,
                 name,
                 description,
                 price,
                 image,
-                kosher
+                kosher,
+                alcoholPercentage,
+                volume,
+                type,
+                drySweet,
+                grapeVarieties
             } = req.body;
             const product = new Product({
+                id,
                 name,
                 description,
                 price,
                 image,
-                kosher
+                kosher,
+                alcoholPercentage,
+                volume,
+                type,
+                drySweet,
+                grapeVarieties
             });
             await product.save();
             res.json(product);
