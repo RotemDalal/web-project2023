@@ -1,0 +1,12 @@
+.product-container {
+    display: flex;
+margin: 20px 0 ;
+}
+
+.product-quantity {
+    margin-left: 20px;
+}
+
+#buy-button {
+    margin: 20px 0;
+}

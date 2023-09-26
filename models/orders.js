@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const purchaseSchema = new mongoose.Schema({
-    userId: mongoose.Schema.Types.ObjectId,
-    productId: mongoose.Schema.Types.ObjectId,
+    userId: String,
     purchaseDate: Date,
     quantity: Number
 });

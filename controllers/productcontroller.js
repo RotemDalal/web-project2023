@@ -148,6 +148,27 @@ module.exports = {
             res.status(500).json({ error: 'An error occurred while updating the cart.', errorString: error.toString() });
           }
     },
+    async clearCart(req, res) {
+        if (!(req.session && req.session.user)) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
+
+        try {
+            const userId = req.session.user._id;
+        
+            const cart = await Cart.findOne({ userId });
+            if (!cart) {
+              return res.status(404).json({ error: 'Cart not found' });
+            }
+        
+            cart.products = [];
+            await cart.save();
+            res.json({ message: 'Cart updated successfully', cart });
+        
+          } catch (error) {
+            res.status(500).json({ error: 'An error occurred while updating the cart.', errorString: error.toString() });
+          }
+    },
     async addToCart(req, res) {
         if (!(req.session && req.session.user)) {
             return res.status(401).json({ error: 'Unauthorized' });

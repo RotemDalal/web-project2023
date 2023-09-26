@@ -49,6 +49,7 @@ const socialController = require('./controllers/socialController');
 // Routes
 app.use("/shop", require("./routes/shop"));
 app.use("/cocktails", require("./routes/cocktails"));
+app.use("/checkout", require("./routes/checkout"));
 app.use("/wines", require("./routes/wines"));
 app.use("/", require("./routes/index"));
 app.use("/branch", require("./routes/branches"));
@@ -60,6 +61,8 @@ app.get('/logout', userController.logout);
 app.get('/api/getCart', productController.getCart)
 
 app.post('/api/addToCart', productController.addToCart)
+app.post('/api/addOrder', require("./controllers/orders").addOrder)
+app.get('/api/clearCart', productController.clearCart)
 app.post('/api/removeFromCart', productController.removeFromCart)
 app.get('/products', productController.getProducts);
 app.post('/api/postToFB', socialController.postToFB);
