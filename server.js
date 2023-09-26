@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
@@ -53,8 +54,10 @@ app.use("/admin", require("./routes/admin"));
 app.post('/register', userController.register);
 app.post('/login', userController.login);
 app.get('/logout', userController.logout);
+app.get('/api/getCart', productController.getCart)
 
 app.post('/api/addToCart', productController.addToCart)
+app.post('/api/removeFromCart', productController.removeFromCart)
 app.get('/products', productController.getProducts);
 app.post('/api/postToFB', socialController.postToFB);
 app.get('/api/getFBDetails', socialController.getDetails);

@@ -49,7 +49,7 @@ module.exports = {
             }
 
             req.session.user = user;
-
+        
             res.json(user);
         } catch (error) {
             res.status(500).json({ error: 'An error occurred.' });
