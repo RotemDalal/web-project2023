@@ -25,7 +25,7 @@ const getDetails = async (req, res) => {
     FB.api('me', function (fbResp) {
         if(!fbResp || fbResp.error) {
          console.log(!fbResp ? 'error occurred' : fbResp.error);
-         fbResp.status(500).send('Internal Server Error');
+         res.status(500).send('Internal Server Error');
          return;
         }
         res.json({ id: fbResp.id, name: fbResp.name });
