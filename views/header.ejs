@@ -4,17 +4,19 @@
             <div id="logo">
                 <a class="img-logo" href="/"><img src="/img/index/wineIcon.jpg" style="width: 55px;"></a>
             </div>
+            <% if (typeof(isAdmin) == "undefined" || !isAdmin) { %>
             <div>
                 <a class="menu-item" data-bs-toggle="modal" data-bs-target="#cartModal">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="cart-counter" class="badge badge-danger">0</span>
                 </a>
             </div>
+            <% } %>
             <div>
-                <a class="menu-item" href="/wines.html">Wines</a>
+                <a class="menu-item" href="/wines">Wines</a>
             </div>
             <div>
-                <a class="menu-item" href="/cocktails.html">Cocktails</a>
+                <a class="menu-item" href="/cocktails">Cocktails</a>
             </div>
             <div>
                 <a class="menu-item" href="/shop">Shop</a>
@@ -23,15 +25,7 @@
                 <i class="menu-item fa-solid fa-cart-shopping"></i>
             </div>
         </div>
-        <div class="searchBox">
-
-            <input class="searchInput" type="text" placeholder="Search">
-            <button class="searchButton" href=#>
-                <i class="material-icons">
-                    search
-                </i>
-            </button>
-        </div>
+        
         <div class="right-side">
             <% if (!username) { %>
                 <div>
@@ -104,8 +98,8 @@
     <div class="hamburger-menu">
         <ul>
             <li><a class="menu-item" href="/">Home</a></li>
-            <li><a class="menu-item" href="/wines.html">Wines</a></li>
-            <li><a class="menu-item" href="/cocktails.html">Cocktails</a></li>
+            <li><a class="menu-item" href="/wines">Wines</a></li>
+            <li><a class="menu-item" href="/cocktails">Cocktails</a></li>
             <li><a class="menu-item" href="/shop">Shop</a></li>
         </ul>
     </div>

@@ -21,7 +21,7 @@ const index = async(req, res) => {
         // const exchangeRates = response.data.rates;
         // // Retrieve the exchange rate from USD to ILS
         // const usdToIlsRate = exchangeRates[targetCurrency];
-        res.render("../views/shop.ejs", {username: req.session.user?.username, rate: 3.5}); // rate: usdToIlsRate
+        res.render("../views/shop.ejs", {username: req.session.user?.username, rate: 3.5, isAdmin: req.session.user?.isAdmin}); // rate: usdToIlsRate
     } catch (error) {
         res.status(500).json({ message: "Error fetching exchange rate" });
     }

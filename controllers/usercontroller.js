@@ -14,7 +14,7 @@ module.exports = {
         if (req.session && req.session.user && req.session.user.isAdmin) {
             return next();
         }
-        return res.redirect('/index.html');
+        return res.redirect('/');
     },
 
     async profile(req, res) {

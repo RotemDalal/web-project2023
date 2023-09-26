@@ -1,10 +1,8 @@
 
 const index = async(req, res) => {
-    if(!req.session.user) return res.redirect("/index.html");
-    res.render("../views/admin.ejs", {username: req.session.user?.username});
+    if(!req.session.user) return res.redirect("/");
+    res.render("../views/admin.ejs", {username: req.session.user?.username,isAdmin:req.session.user?.isAdmin});
 }
-
-const isAdmin = 
 
 module.exports =  {
     index

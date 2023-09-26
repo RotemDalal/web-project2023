@@ -48,6 +48,9 @@ const productController = require('./controllers/productcontroller');
 const socialController = require('./controllers/socialController');
 // Routes
 app.use("/shop", require("./routes/shop"));
+app.use("/cocktails", require("./routes/cocktails"));
+app.use("/wines", require("./routes/wines"));
+app.use("/", require("./routes/index"));
 app.use("/branch", require("./routes/branches"));
 app.use("/profile", require("./routes/profile"));
 app.use("/admin", require("./routes/admin"));
