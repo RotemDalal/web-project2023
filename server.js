@@ -85,9 +85,4 @@ app.get('/statistics-page', async (req, res) => {
 //... listen to your server
 
 const http = require("http").Server(app);
-const https = require("https");
-const devcert = require('devcert');
-devcert.certificateFor('my-app.test').then((ssl) => {
-    https.createServer(ssl, app).listen(5555);
-});
 http.listen(process.env.PORT || 5500);
