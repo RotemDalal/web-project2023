@@ -3,7 +3,6 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
